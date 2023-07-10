@@ -1,0 +1,14 @@
+Ejecutamos docker-compose up  para levantar Zookeper y el kafka-broker
+
+ejecutamos el kafkabroker para que ejecute comandos en bash en modo interatvio
+ docker exec -it kafka-broker-1 bash
+
+ Cremaos el topico
+ kafka-topics --bootstrap-server kafka-broker-1:9092 --create -topic topicoSaludos
+
+ Creamos el productor de streams sobre el topico creado
+
+kafka-console-producer --bootstrap-server kafka-broker-1:9092 -topic topicoSaludos
+
+y en otra consola volvemos a ejecutrar el kafkabroke y creamos el consumidor del topico
+kafka-console-consumer --bootstrap-server kafka-broker-1:9092 -topic topicoSaludos --from-beginning
